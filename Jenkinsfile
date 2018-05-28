@@ -9,6 +9,11 @@ pipeline {
         stage("Unit test") {
             steps {
                 sh "./gradlew test"
+                publishHTML (target: [
+                        reportDir: 'build/reports/tests/test',
+                        reportFiles: 'index.html',
+                        reportName: "Checkstyle Report"
+                ])
             }
         }
         stage("Static code analysis") {
