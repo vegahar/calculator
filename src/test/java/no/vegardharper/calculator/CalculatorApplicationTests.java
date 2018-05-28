@@ -13,4 +13,8 @@ public class CalculatorApplicationTests {
 		assertEquals(4, calculator.sum(1, 3));
 	}
 
+	@Test
+	public void subtract_shouldSubtractTwoIntegers() {
+		assertEquals( 1, calculator.subtract(4, 3));
+	}
 }
