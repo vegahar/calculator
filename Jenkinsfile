@@ -10,9 +10,10 @@ pipeline {
             steps {
                 sh "./gradlew test"
                 publishHTML (target: [
-                        reportDir: 'build/reports/tests/test',
+                        reportDir: 'build/reports/tests/test/',
                         reportFiles: 'index.html',
-                        reportName: "Checkstyle Report"
+                        reportName: "Test Report",
+                        keepAll: true
                 ])
             }
         }
@@ -22,7 +23,8 @@ pipeline {
                 publishHTML (target: [
                         reportDir: 'build/reports/checkstyle/',
                         reportFiles: 'main.html',
-                        reportName: "Checkstyle Report"
+                        reportName: "Checkstyle Report",
+                        keepAll: true
                 ])
             }
         }
@@ -32,7 +34,8 @@ pipeline {
                 publishHTML (target: [
                         reportDir: 'build/reports/jacoco/test/html',
                         reportFiles: 'index.html',
-                        reportName: "JaCoCo Report"
+                        reportName: "JaCoCo Report",
+                        keepAll: true
                 ])
                 sh "./gradlew jacocoTestCoverageVerification"
             }
