@@ -1,0 +1,20 @@
+version: '3'
+services:
+  jenkins:
+    user: root
+    image: jenkinsci/blueocean
+    ports:
+      - '8080:8080'
+    restart: on-failure
+    volumes:
+      - "jenkins-data:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "$HOME:/home"
+  docker-registry:
+    image: registry:2
+    ports:
+      - '5000:5000'
+    restart: on-failure
+
+volumes:
+  jenkins-data: {}
