@@ -28,9 +28,11 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile 'org.springframework.data:spring-data-redis:2.0.7.RELEASE'
-    compile 'io.lettuce:lettuce-core:5.0.4.RELEASE'
+    compile('org.springframework.data:spring-data-redis:2.0.7.RELEASE')
+    compile('io.lettuce:lettuce-core:5.0.4.RELEASE')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('io.cucumber:cucumber-java8:3.0.2')
+    testCompile('io.cucumber:cucumber-junit:3.0.2')
 }
 
 tasks.withType(Checkstyle) {
@@ -48,5 +50,22 @@ jacocoTestCoverageVerification {
             }
         }
     }
+}
 
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'no.vegardharper.calculator', 'src/test/resources']
+        }
+    }
 }
