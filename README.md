@@ -11,7 +11,7 @@
 * Configure a multi branch project and point the url to this project
 * Start a build
 * Run the in script console ```System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")```
-* Need it to display nice graphs :) [1]
+* Need it to display nice graphs :) [jenkins-wiki]
 
 
 
@@ -26,4 +26,4 @@
 
 
 
-[1]: https://wiki.jenkins.io/display/JENKINS/Configuring+Content+Security+Policy
+[jenkins-wiki]: https://wiki.jenkins.io/display/JENKINS/Configuring+Content+Security+Policy
