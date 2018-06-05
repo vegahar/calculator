@@ -21,8 +21,8 @@
 * This will run a spring boot application connected to a redis cache. 
 
 #### Connect to redis
-* Need to connect to
-```docker-compose exec redis redis-cli```
+* Need to connect to redis?
+* Run ```docker-compose exec redis redis-cli```
 
 
 
